@@ -24,6 +24,7 @@ public class MijnComponent extends HComponent {
     Image bulletimg;
     private int x;
     private int y,y2;
+    MyBullet myBullet;
     
     
 
@@ -33,18 +34,19 @@ public class MijnComponent extends HComponent {
     this.setBounds(x,y,w,h); //X,Y, breedte, hoogte
     br = w;
     ho = h;
-    x = 250;
-    y = 250;
+    x = 0;
+    y = 25;
     y2 = 0;
+  myBullet = new MyBullet(this.x+80,this.y,"Player");
     
-    schipimg = this.getToolkit().getImage("spaceship.png");
+    schipimg = this.getToolkit().getImage("XWingFighter.png");
     sterrenimg = this.getToolkit().getImage("sterren.png");
     bulletimg = this.getToolkit().getImage("lazor.jpg");
-    
     MediaTracker mt = new MediaTracker(this);
     mt.addImage(schipimg,0);
     mt.addImage(sterrenimg,0);
-    mt.addImage(bulletimg, 0);
+      mt.addImage(bulletimg,0);
+ 
     
         try {
             mt.waitForAll();
@@ -55,12 +57,12 @@ public class MijnComponent extends HComponent {
     }
     public void paint(Graphics g)
     {
-        g.drawImage(sterrenimg,y2+570,0,null);
-   g.drawImage(sterrenimg,y2,0,null);
-    g.drawImage(schipimg, x, y, null);
-    g.drawImage(bulletimg, x+50,y,null);
+     g.drawImage(sterrenimg,y2+570,0,null);
+     g.drawImage(sterrenimg,y2,0,null);
+     g.drawImage(schipimg,this.x , this.y+250, null); //spwn ship in middle of screen
    
-    
+   
+
     }
     public void moveleft()
         {
@@ -71,9 +73,10 @@ public class MijnComponent extends HComponent {
     
     public void shoot()
         {
+           myBullet = new MyBullet(this.x+80,this.y,"Player");
            
-        
-        
+            System.out.println(myBullet);
+             System.out.println(this);
             this.repaint();
         
         }
