@@ -40,13 +40,9 @@ MijnComponent mc;
      //  mc = new MijnComponent(0,0,720,576);
      //  scene.add(mc);
        
-        button1.setVisible(true);
-       button2.setVisible(true);
-      
-       
-       
-      
-       
+      button1.setVisible(true);
+      button2.setVisible(true);
+
        scene.validate();
        scene.setVisible(true);
     }
@@ -80,7 +76,7 @@ MijnComponent mc;
         UserEventRepository rep = new UserEventRepository("naam");
         //Toevoegen van arrow keys aan de rep
         rep.addAllArrowKeys();
-        rep.addKey(org.havi.ui.event.HRcEvent.VK_ENTER);
+        rep.addKey(org.havi.ui.event.HRcEvent.VK_SPACE);
         EventManager m = EventManager.getInstance();
         m.addUserEventListener(this, rep);
         
@@ -100,7 +96,7 @@ MijnComponent mc;
     {
         if(gameRunning)
         {
-            mc.scroll();
+           mc.scroll();
         }
     
     }
@@ -127,10 +123,12 @@ MijnComponent mc;
         {
             mc.movedown();
         }
-        
-        if(e.getType()==KeyEvent.KEY_PRESSED && e.getCode()==HRcEvent.VK_ENTER)
+            
+        if(e.getType()==KeyEvent.KEY_PRESSED && e.getCode()==HRcEvent.VK_SPACE)
         {
+            
             mc.shoot();
+           
         }
         
     }
